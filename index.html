@@ -54,32 +54,4 @@ h2 { padding: 12px 10px 5px; font-size: 16px; }
 <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="aeab85ef-dfea-4990-ad7d-d68e2106551a";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </body>
 </html>
-/* WhatsApp ফ্লোটিং বাটন - বাম পাশে নিচে */
-.whatsapp-float {
-  position: fixed;
-  width: 55px;
-  height: 55px;
-  bottom: 80px; /* Crisp এর উপরে থাকবে */
-  left: 20px; /* বাম কোণা */
-  background-color: #25D366;
-  color: #FFF;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 30px;
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-
-/* Crisp কে ডানে নিচে রাখার জন্য */
-#crisp-chatbox {
-  z-index: 99!important;
-}
+.whatsapp-float { position: fixed; width: 55px; height: 55px; bottom: 80px; left: 20px; background-color: #25D366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 6px rgba(0,0,0,0.3); z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; } .whatsapp-float:hover { transform: scale(1.1); }
