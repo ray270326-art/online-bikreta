@@ -1,80 +1,14 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>অনলাইন বিক্রেতা</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial; background: #f1f1f1; padding-bottom: 60px; }
-.header { background: #ff5722; padding: 10px; position: sticky; top: 0; z-index: 10; }
-.logo { color: white; text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 8px; }
-.search { background: white; border-radius: 20px; display: flex; padding: 5px; }
-.search input { flex: 1; border: none; outline: none; padding: 5px 10px; font-size: 14px; }
-.search button { background: #ff5722; color: white; border: none; padding: 5px 15px; border-radius: 15px; font-weight: bold; }
-h2 { padding: 12px 10px 5px; font-size: 16px; }
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 0 8px 20px; }
-.card { background: white; border-radius: 8px; padding: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.card img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; }
-.name { font-size: 13px; margin: 6px 0; height: 32px; overflow: hidden; line-height: 1.3; }
-.price { color: #f57224; font-weight: bold; font-size: 15px; }
-.msg-btn { background: #25D366; color: white; border: none; width: 100%; padding: 8px; border-radius: 6px; margin-top: 6px; font-size: 13px; font-weight: bold; cursor: pointer; }
-</style>
-</head>
-<body>
-  
-  <div class="header">
-    <div class="logo">অনলাইন বিক্রেতা</div>
-    <div class="search">
-      <input type="text" placeholder="আমি কি খুঁজবো...">
-      <button>Search</button>
-    </div>
-  </div>
-<h2>আমাদের প্রোডাক্ট</h2>
-<div class="grid">
+        <input type="hidden" name="product" id="productName">
 
-  <div class="card">
-    <a href="https://ibb.co.com/N2fcWSg6"><img src="https://i.ibb.co.com/SwHFVrDX/1785514591020.jpg" alt="1785514591020" border="0"></a>
-    <p class="name">শাড়ি </p>
-    <p class="price">৳1450/12%ডিসকাউন্ট </p>
-    <button class="order-btn" onclick="openForm('শাড়ি সেট - ৳1450')">অর্ডার করুন</button>
-  </div>
-
-  <div class="card">
-    <a href="https://ibb.co.com/n4Phf4K"><img src="https://i.ibb.co.com/yK4L5Kx/1785514546796.jpg" alt="1785514546796" border="0"></a>
-    <p class="name">শাড়ি </p>
-    <p class="price">৳1200/10%ডিসকাউন্ট </p>
-    <button class="order-btn" onclick="openForm('শাড়ি - ৳1200')">অর্ডার করুন</button>
-  </div>
-  ae47    <button class="order-btn" onclick="openForm('শাড়ি - ৳1200')">অর্ডার করুন</button>
-48    </div>
-
-<!-- এখান থেকে শুরু popup কোড -->
-<style>
-.popup {display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);}
-.popup-content {background:#fff; margin:5% auto; padding:20px; width:90%; max-width:450px; border-radius:12px; position:relative;}
-.close {position:absolute; right:15px; top:10px; font-size:28px; cursor:pointer; color:#999;}
-.popup-content h2 {text-align:center; color:#c2185b; margin-bottom:15px;}
-.popup-content input, .popup-content textarea, .popup-content select {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:6px; font-size:14px;}
-.popup-content button {width:100%; padding:12px; background:#c2185b; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer;}
-</style>
-
-<div id="orderPopup" class="popup">
-  <div class="popup-content">
-    <span class="close">&times;</span>
-    <h2>অর্ডার কনফার্ম করুন</h2>
-    <form id="orderForm">
-      <input type="hidden" name="product" id="productName">
-      
       <label>আপনার নাম *</label>
-      <input type="text" name="name" placeholder="পুরো নাম" required>
-      
+      <input type="text" name="name" placeholder="আপনার পুরো নাম" required>
+
       <label>মোবাইল নাম্বার *</label>
       <input type="tel" name="phone" id="phone" placeholder="01XXXXXXXXX" required>
-      
+
       <label>সম্পূর্ণ ঠিকানা *</label>
       <textarea name="address" placeholder="গ্রাম, ইউনিয়ন, জেলা" rows="3" required></textarea>
-      
+
       <label>কয় পিস নিবেন *</label>
       <select name="quantity" required>
         <option value="1">1 পিস</option>
@@ -91,12 +25,24 @@ h2 { padding: 12px 10px 5px; font-size: 16px; }
   </div>
 </div>
 <script>
-
+function openForm(product) {
+  document.getElementById("orderPopup").style.display = "flex";
+  document.getElementById("productName").value = product;
+}
+document.querySelector(".close").onclick = function() {
+  document.getElementById("orderPopup").style.display = "none";
+}
+document.getElementById("orderForm").onsubmit = function(e) {
+  e.preventDefault();
+  let form = e.target;
+  let msg = `নতুন অর্ডার 🔥%0A%0Aপ্রোডাক্ট: ${form.product.value}%0Aনাম: ${form.name.value}%0Aমোবাইল: ${form.phone.value}%0Aঠিকানা: ${form.address.value}%0Aপরিমাণ: ${form.quantity.value} পিস`;
+  window.open(`https://wa.me/8801328584095?text=${msg}`, '_blank');
+  document.getElementById("orderPopup").style.display = "none";
+  form.reset();
+  alert("অর্ডার সফল! আমরা WhatsApp এ পেয়েছি। 24 ঘন্টার মধ্যে কল দিব");
+}
 </script>
 <!-- এখানে শেষ popup কোড -->
-
-49 <script type="text/javascript">
-50    window.$crisp=[];window.CRISP_WEBSITE_ID="ae
 <script type="text/javascript">
 window.$crisp=[];window.CRISP_WEBSITE_ID="aeab85ef-dfea-4990-ad7d-d68e2106551a";
 (function(){
@@ -107,11 +53,11 @@ d.getElementsByTagName("head")[0].appendChild(s);
 </script>
 <footer style="text-align:center; padding:20px; background:#f1f1f1; margin-top:30px;">
   <p style="margin:5px 0;">যোগাযোগ: 01328-584095</p>
-  
-  <a href="https://www.facebook.com/profile.php?id=61588766685459" target="_blank" 
+
+  <a href="https://www.facebook.com/profile.php?id=61588766685459" target="_blank"
      style="background:#1877F2; color:white; padding:12px 25px; text-decoration:none; border-radius:8px; display:inline-block; font-weight:bold; margin:10px 0;">
      📘 আমাদের Facebook Page
   </a>
-  
+
   <p style="margin:5px 0; font-size:14px;">Glorry Hub © 2026</p>
 </footer>
