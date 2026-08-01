@@ -37,15 +37,97 @@ h2 { padding: 12px 10px 5px; font-size: 16px; }
     <a href="https://ibb.co.com/N2fcWSg6"><img src="https://i.ibb.co.com/SwHFVrDX/1785514591020.jpg" alt="1785514591020" border="0"></a>
     <p class="name">শাড়ি </p>
     <p class="price">৳1450/12%ডিসকাউন্ট </p>
-    <button class="msg-btn" onclick="window.open('https://wa.me/8801304383694?text=হ্যালো, আমি ক্যাজুয়াল শার্ট টা অর্ডার করতে চাই। দাম ৳850')">অর্ডার  করুন</button>
+    <button class="order-btn" onclick="openForm('শাড়ি সেট - ৳1450')">অর্ডার করুন</button>
   </div>
 
   <div class="card">
     <a href="https://ibb.co.com/n4Phf4K"><img src="https://i.ibb.co.com/yK4L5Kx/1785514546796.jpg" alt="1785514546796" border="0"></a>
     <p class="name">শাড়ি </p>
     <p class="price">৳1200/10%ডিসকাউন্ট </p>
-    <button class="msg-btn" onclick="window.open('https://wa.me/8801304383694?text=হ্যালো, আমি প্রিমিয়াম পাঞ্জাবি টা অর্ডার করতে চাই। দাম ৳1200')">অর্ডার করুন</button>
+    <button class="order-btn" onclick="openForm('শাড়ি - ৳1200')">অর্ডার করুন</button>
   </div>
+  ae47    <button class="order-btn" onclick="openForm('শাড়ি - ৳1200')">অর্ডার করুন</button>
+48    </div>
+
+<!-- এখান থেকে শুরু popup কোড -->
+<style>
+.popup {display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);}
+.popup-content {background:#fff; margin:5% auto; padding:20px; width:90%; max-width:450px; border-radius:12px; position:relative;}
+.close {position:absolute; right:15px; top:10px; font-size:28px; cursor:pointer; color:#999;}
+.popup-content h2 {text-align:center; color:#c2185b; margin-bottom:15px;}
+.popup-content input, .popup-content textarea, .popup-content select {width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:6px; font-size:14px;}
+.popup-content button {width:100%; padding:12px; background:#c2185b; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer;}
+.otp-box {display:flex; gap:5px;}
+.otp-box input {text-align:center;}
+</style>
+
+<div id="orderPopup" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <h2>অর্ডার কনফার্ম করুন</h2>
+    <form id="orderForm">
+      <input type="hidden" name="product" id="productName">
+      
+      <label>আপনার নাম *</label>
+      <input type="text" name="name" placeholder="পুরো নাম" required>
+      
+      <label>মোবাইল নাম্বার *</label>
+      <input type="tel" name="phone" id="phone" placeholder="01XXXXXXXXX" required>
+      
+      <label>সম্পূর্ণ ঠিকানা *</label>
+      <textarea name="address" placeholder="গ্রাম, ইউনিয়ন, জেলা" rows="3" required></textarea>
+      
+      <label>কয় পিস নিবেন *</label>
+      <select name="quantity" required>
+        <option value="1">1 পিস</option>
+        <option value="2">2 পিস</option>
+        <option value="3">3 পিস</option>
+        <option value="4">4 পিস</option>
+        <option value="5">5 পিস</option>
+      </select>
+      
+      <label>SMS ভেরিফাই কোড *</label>
+      <div class="otp-box">
+        <input type="text" id="otp" placeholder="কোড" required>
+        <button type="button" onclick="sendOTP()" style="width:120px; background:#25D366;">কোড পাঠান</button>
+      </div>
+      
+      <button type="submit">অর্ডার সাবমিট করুন</button>
+    </form>
+  </div>
+</div>
+
+<script>
+let generatedOTP = "";
+
+function openForm(product) {
+  document.getElementById("orderPopup").style.display = "block";
+  document.getElementById("productName").value = product;
+}
+document.querySelector(".close").onclick = function() {
+  document.getElementById("orderPopup").style.display = "none";
+}
+
+function sendOTP() {
+  let phone = document.getElementById("phone").value;
+  if(phone.length < 11) { alert("সঠিক নাম্বার দিন"); return; }
+  generatedOTP = Math.floor(1000 + Math.random() * 9000);
+  alert("আপনার ভেরিফাই কোড: " + generatedOTP + "\n\nনোট: এটা ডেমো। আসল SMS এর জন্য Twilio লাগবে");
+}
+
+document.getElementById("orderForm").onsubmit = function(e) {
+  e.preventDefault();
+  let enteredOTP = document.getElementById("otp").value;
+  if(enteredOTP != generatedOTP) { alert("ভুল কোড! আবার চেষ্টা করুন"); return; }
+  
+  alert("অর্ডার সফল! আমরা 24 ঘন্টার মধ্যে কল দিব");
+  document.getElementById("orderPopup").style.display = "none";
+}
+</script>
+<!-- এখানে শেষ popup কোড -->
+
+49 <script type="text/javascript">
+50    window.$crisp=[];window.CRISP_WEBSITE_ID="ae
 <script type="text/javascript">
 window.$crisp=[];window.CRISP_WEBSITE_ID="aeab85ef-dfea-4990-ad7d-d68e2106551a";
 (function(){
