@@ -3,141 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glorry Hub - Crisp Shop</title>
+<title>Glorry Hub - অনলাইন বিক্রেতা</title>
 <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        margin: 0;
-        background: #f8f9fa; /* Crisp সাদা ব্যাকগ্রাউন্ড */
-    }
-    header {
-        background: #D81B60;
-        color: white;
-        text-align: center;
-        padding: 18px;
-        font-size: 26px;
-        font-weight: bold;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .products {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* 2 কলাম */
-        gap: 16px; 
-        padding: 16px;
-        max-width: 600px;
-        margin: auto;
-    }
-    .product {
-        background: white;
-        border-radius: 16px; /* বেশি গোল */
-        padding: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Crisp shadow */
-        transition: 0.2s;
-    }
-    .product:hover {
-        transform: translateY(-3px); /* মাউস নিলে উপরে উঠবে */
-    }
-    .product img {
-        width: 100%;
-        height: 200px; /* আরো চওড়া */
-        object-fit: cover;
-        border-radius: 12px;
-    }
-    .product h3 {
-        font-size: 17px;
-        margin: 12px 0 6px 0;
-        font-weight: 600;
-        color: #333;
-    }
-    .price {
-        color: #E91E63;
-        font-weight: bold;
-        font-size: 16px;
-        margin: 6px 0 12px 0;
-    }
-    .order-btn {
-        background: #25D366;
-        color: white;
-        border: none;
-        padding: 12px;
-        width: 100%;
-        border-radius: 10px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-    .order-btn:hover {
-        background: #1ebe5a;
-    }
-    /* বাকি Popup + Footer আগের মতোই */
-    #orderPopup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 999; }
-    #orderPopup > div { background: white; padding: 20px; border-radius: 16px; width: 90%; max-width: 400px; position: relative; }
-    .close { position: absolute; top: 10px; right: 15px; font-size: 28px; cursor: pointer; color: #999; }
-    label { font-weight: bold; margin-top: 10px; display: block; }
-    input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-    footer { text-align: center; padding: 20px; background: #222; color: white; }
+body { font-family: 'Noto Sans Bengali', sans-serif; margin:0; padding:0; background:#f5f5f5; }
+.header { background:#FF5722; color:white; padding:15px; text-align:center; }
+.header h1 { margin:0; font-size:24px; }
+.search { padding:10px; background:#FF5722; }
+.search input { width:70%; padding:10px; border:none; border-radius:20px 0 0 20px; }
+.search button { width:28%; padding:10px; border:none; background:#D81B60; color:white; border-radius:0 20px 20px 0; font-weight:bold; }
+.container { padding:15px; }
+.products { display:grid; grid-template-columns: repeat(2, 1fr); gap:15px; }
+.product { background:white; border-radius:10px; padding:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+.product img { width:100%; border-radius:8px; }
+.product h3 { margin:8px 0; font-size:16px; }
+.price { color:#FF5722; font-weight:bold; margin:5px 0; }
+.order-btn { width:100%; padding:10px; background:#4CAF50; color:white; border:none; border-radius:8px; font-weight:bold; cursor:pointer; }
+
+/* Popup CSS */
+#orderPopup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#orderPopup > div {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 28px;
+  cursor: pointer;
+}
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+label { font-weight: bold; margin-top: 10px; display: block; }
+footer { text-align:center; padding:20px; background:#f1f1f1; margin-top:30px; }
 </style>
 </head>
 <body>
 
-<header>Glorry Hub</header>
-
-<div class="products">
-  
-  <div class="product">
-    <img src="https://i.ibb.co/yK4L5Kx/1785514546796.jpg" alt="শাড়ি">
-    <h3>শাড়ি</h3>
-    <p class="price">৳1450 / <br> 12% ডিসকাউন্ট</p>
-    <button class="order-btn" onclick="openForm('শাড়ি - ৳1450')">অর্ডার করুন</button>
-  </div>
-
-  <div class="product">
-    <img src="https://i.ibb.co/aeab85ef-dfea-4990-ad7d-d68e2106551a.jpg" alt="থ্রি পিস">
-    <h3>থ্রি পিস</h3>
-    <p class="price">৳1800 / <br> 15% ডিসকাউন্ট</p>
-    <button class="order-btn" onclick="openForm('থ্রি পিস - ৳1800')">অর্ডার করুন</button>
-  </div>
-
+<div class="header">
+  <h1>অনলাইন বিক্রেতা</h1>
 </div>
 
-<!-- Popup Form + Script + Footer আগের মতোই -->
+<div class="search">
+  <input type="text" placeholder="আমি কি খুঁজবো...">
+  <button>Search</button>
+</div>
+
+<div class="container">
+  <h2>আমাদের প্রোডাক্ট</h2>
+  <div class="products">
+    
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300/ff0000/ffffff?text=শাড়ি+1" alt="শাড়ি">
+      <h3>শাড়ি</h3>
+      <p class="price">৳1450/12%ডিসকাউন্ট</p>
+      <button class="order-btn" onclick="openForm('শাড়ি - ৳1450')">অর্ডার করুন</button>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300/ffd700/000?text=শাড়ি+2" alt="শাড়ি">
+      <h3>শাড়ি</h3>
+      <p class="price">৳1200/10%ডিসকাউন্ট</p>
+      <button class="order-btn" onclick="openForm('শাড়ি - ৳1200')">অর্ডার করুন</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Popup Form -->
 <div id="orderPopup">
   <div>
     <span class="close">&times;</span>
     <h3 style="text-align:center; color:#D81B60;">অর্ডার কনফার্ম করুন</h3>
     <form id="orderForm">
       <input type="hidden" name="product" id="productName">
-      <label>আপনার নাম *</label><input type="text" name="name" required>
-      <label>মোবাইল নাম্বার *</label><input type="tel" name="phone" required>
-      <label>সম্পূর্ণ ঠিকানা *</label><textarea name="address" rows="3" required></textarea>
+
+      <label>আপনার নাম *</label>
+      <input type="text" name="name" placeholder="আপনার পুরো নাম" required>
+
+      <label>মোবাইল নাম্বার *</label>
+      <input type="tel" name="phone" placeholder="01XXXXXXXXX" required>
+
+      <label>সম্পূর্ণ ঠিকানা *</label>
+      <textarea name="address" placeholder="গ্রাম, ইউনিয়ন, জেলা" rows="3" required></textarea>
+
       <label>কয় পিস নিবেন *</label>
-      <select name="quantity" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
-      <button type="submit" style="width:100%; padding:15px; background:#D81B60; color:white; border:none; border-radius:10px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px;">অর্ডার সাবমিট করুন</button>
+      <select name="quantity" required>
+        <option value="1">1 পিস</option>
+        <option value="2">2 পিস</option>
+        <option value="3">3 পিস</option>
+        <option value="4">4 পিস</option>
+        <option value="5">5 পিস</option>
+      </select>
+      
+      <button type="submit" style="width:100%; padding:15px; background:#D81B60; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px;">
+        অর্ডার সাবমিট করুন
+      </button>
     </form>
   </div>
 </div>
-
-<script>
-function openForm(product) {
-  document.getElementById("orderPopup").style.display = "flex";
-  document.getElementById("productName").value = product;
-}
-document.querySelector(".close").onclick = function() { document.getElementById("orderPopup").style.display = "none"; }
-document.getElementById("orderForm").onsubmit = function(e) {
-  e.preventDefault(); let form = e.target;
-  let msg = `নতুন অর্ডার 🔥%0A%0Aপ্রোডাক্ট: ${form.product.value}%0Aনাম: ${form.name.value}%0Aমোবাইল: ${form.phone.value}%0Aঠিকানা: ${form.address.value}%0Aপরিমাণ: ${form.quantity.value} পিস`;
-  window.open(`https://wa.me/8801328584095?text=${msg}`, '_blank');
-  document.getElementById("orderPopup").style.display = "none"; form.reset();
-  alert("অর্ডার সফল! আমরা WhatsApp এ পেয়েছি। 24 ঘন্টার মধ্যে কল দিব");
-}
-</script>
-
-<footer>
-  <p>যোগাযোগ: <a href="tel:01328584095" style="color:#25D366;">01328-584095</a></p>
-  <a href="https://www.facebook.com/profile.php?id=61588766685459" target="_blank" style="background:#1877F2; color:white; padding:12px 25px; text-decoration:none; border-radius:10px; display:inline-block; font-weight:bold; margin:10px 0;">📘 Facebook Page</a>
-  <p style="font-size:14px;">Glorry Hub © 2026</p>
-</footer>
-
-</body>
-</html>
