@@ -121,8 +121,24 @@ footer { text-align:center; padding:20px; background:#f1f1f1; margin-top:30px; }
     </form>
   </div>
 </div>
-
 <script>
+  <div class="products">
+    
+  <div class="product">
+    <img src="https://i.ibb.co.com/SwHFVrDX/1785514591020.jpg" alt="শাড়ি">
+    <h3>শাড়ি</h3>
+    <p class="price">৳1450 / 12% ডিসকাউন্ট</p>
+    <button class="order-btn" onclick="openForm('শাড়ি - ৳1450')">অর্ডার করুন</button>
+  </div>
+
+  <div class="product">
+    <img src="https://i.ibb.co.com/yK4L5Kx/1785514546796.jpg" alt="শাড়ি">
+    <h3>শাড়ি</h3>
+    <p class="price">৳1200 / 10% ডিসকাউন্ট</p>
+    <button class="order-btn" onclick="openForm('শাড়ি - ৳1200')">অর্ডার করুন</button>
+  </div>
+
+</div>
 function openForm(product) {
   document.getElementById("orderPopup").style.display = "flex";
   document.getElementById("productName").value = product;
