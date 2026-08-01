@@ -1,14 +1,8 @@
-        <input type="hidden" name="product" id="productName">
-
-      <label>আপনার নাম *</label>
-      <input type="text" name="name" placeholder="আপনার পুরো নাম" required>
-
-      <label>মোবাইল নাম্বার *</label>
-      <input type="tel" name="phone" id="phone" placeholder="01XXXXXXXXX" required>
-
+        <input type="tel" name="phone" id="phone" placeholder="01XXXXXXXXX" required>
+      
       <label>সম্পূর্ণ ঠিকানা *</label>
       <textarea name="address" placeholder="গ্রাম, ইউনিয়ন, জেলা" rows="3" required></textarea>
-
+      
       <label>কয় পিস নিবেন *</label>
       <select name="quantity" required>
         <option value="1">1 পিস</option>
@@ -25,24 +19,11 @@
   </div>
 </div>
 <script>
-function openForm(product) {
-  document.getElementById("orderPopup").style.display = "flex";
-  document.getElementById("productName").value = product;
-}
-document.querySelector(".close").onclick = function() {
-  document.getElementById("orderPopup").style.display = "none";
-}
-document.getElementById("orderForm").onsubmit = function(e) {
-  e.preventDefault();
-  let form = e.target;
-  let msg = `নতুন অর্ডার 🔥%0A%0Aপ্রোডাক্ট: ${form.product.value}%0Aনাম: ${form.name.value}%0Aমোবাইল: ${form.phone.value}%0Aঠিকানা: ${form.address.value}%0Aপরিমাণ: ${form.quantity.value} পিস`;
-  window.open(`https://wa.me/8801328584095?text=${msg}`, '_blank');
-  document.getElementById("orderPopup").style.display = "none";
-  form.reset();
-  alert("অর্ডার সফল! আমরা WhatsApp এ পেয়েছি। 24 ঘন্টার মধ্যে কল দিব");
-}
+
 </script>
 <!-- এখানে শেষ popup কোড -->
+49 <script type="text/javascript">
+50    window.$crisp=[];window.CRISP_WEBSITE_ID="ae
 <script type="text/javascript">
 window.$crisp=[];window.CRISP_WEBSITE_ID="aeab85ef-dfea-4990-ad7d-d68e2106551a";
 (function(){
@@ -53,11 +34,11 @@ d.getElementsByTagName("head")[0].appendChild(s);
 </script>
 <footer style="text-align:center; padding:20px; background:#f1f1f1; margin-top:30px;">
   <p style="margin:5px 0;">যোগাযোগ: 01328-584095</p>
-
-  <a href="https://www.facebook.com/profile.php?id=61588766685459" target="_blank"
+  
+  <a href="https://www.facebook.com/profile.php?id=61588766685459" target="_blank" 
      style="background:#1877F2; color:white; padding:12px 25px; text-decoration:none; border-radius:8px; display:inline-block; font-weight:bold; margin:10px 0;">
      📘 আমাদের Facebook Page
   </a>
-
+  
   <p style="margin:5px 0; font-size:14px;">Glorry Hub © 2026</p>
 </footer>
