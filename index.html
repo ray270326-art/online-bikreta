@@ -63,7 +63,30 @@ footer { text-align:center; padding:20px; background:#f1f1f1; margin-top:30px; }
   <a href="https://www.facebook.com/profile.php?id=61588766685459" target="_blank"
      style="background:#1877F2; color:white; padding:14px 30px; text-decoration:none; border-radius:10px; display:inline-block; font-weight:bold; font-size:16px; margin:15px 0; box-shadow: 0 4px 8px rgba(24,119,242,0.3);">
      📘 আমাদের Facebook Page
-  </a>
+  </a
+    <script>
+function openForm(productName) {
+  document.getElementById("productName").value = productName;
+  document.getElementById("orderPopup").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("orderPopup").style.display = "none";
+}
+function sendToWhatsApp(event) {
+  event.preventDefault();
+  var name = document.querySelector('input[name="name"]').value;
+  var mobile = document.querySelector('input[name="phone"]').value;
+  var address = document.querySelector('textarea[name="address"]').value;
+  var qty = document.querySelector('select[name="quantity"]').value;
+  var product = document.querySelector('input[name="product"]').value;
+  
+  var message = `*নতুন অর্ডার*%0A%0A*প্রোডাক্ট:* ${product}%0A*নাম:* ${name}%0A*মোবাইল:* ${mobile}%0A*ঠিকানা:* ${address}%0A*পরিমান:* ${qty} পিস`;
+  window.open(`https://wa.me/8801328584095?text=${message}`, '_blank');
+  closeForm();
+}
+</script>
+</body>
+</html>
   <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="aeab85ef-dfea-4990-ad7d-d68e2106551a";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 </body>
   <p style="margin:5px 0; font-size:14px; color:#ccc;">Glorry Hub © 2026</p>
