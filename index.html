@@ -84,37 +84,14 @@ h2 { padding: 12px 10px 5px; font-size: 16px; }
         <option value="5">5 পিস</option>
       </select>
       </div>
-      <button type="submit">অর্ডার সাবমিট করুন</button>
+      <button type="submit" style="width:100%; padding:15px; background:#D81B60; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer;">
+  অর্ডার সাবমিট করুন
+</button>
     </form>
   </div>
 </div>
-
 <script>
-let generatedOTP = "";
 
-function openForm(product) {
-  document.getElementById("orderPopup").style.display = "block";
-  document.getElementById("productName").value = product;
-}
-document.querySelector(".close").onclick = function() {
-  document.getElementById("orderPopup").style.display = "none";
-}
-
-function sendOTP() {
-  let phone = document.getElementById("phone").value;
-  if(phone.length < 11) { alert("সঠিক নাম্বার দিন"); return; }
-  generatedOTP = Math.floor(1000 + Math.random() * 9000);
-  alert("আপনার ভেরিফাই কোড: " + generatedOTP + "\n\nনোট: এটা ডেমো। আসল SMS এর জন্য Twilio লাগবে");
-}
-
-document.getElementById("orderForm").onsubmit = function(e) {
-  e.preventDefault();
-  let enteredOTP = document.getElementById("otp").value;
-  if(enteredOTP != generatedOTP) { alert("ভুল কোড! আবার চেষ্টা করুন"); return; }
-  
-  alert("অর্ডার সফল! আমরা 24 ঘন্টার মধ্যে কল দিব");
-  document.getElementById("orderPopup").style.display = "none";
-}
 </script>
 <!-- এখানে শেষ popup কোড -->
 
