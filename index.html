@@ -66,13 +66,62 @@ footer { text-align:center; padding:20px; background:#f1f1f1; margin-top:30px; }
   </a
     <script>
 </script>
+<!-- Popup Form -->
+<div id="orderPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999;">
+  <div style="background:white; width:90%; max-width:420px; margin:40px auto; padding:25px; border-radius:12px;">
+    <span onclick="closeForm()" style="float:right; font-size:30px; cursor:pointer;">&times;</span>
+    <h2 style="text-align:center; color:#D81B60;">অর্ডার ফর্ম</h2>
+    <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+      <input type="hidden" name="product" id="productName">
+      
+      <label>আপনার নাম *</label>
+      <input type="text" name="name" placeholder="পুরো নাম" required style="width:100%; padding:12px; margin:5px 0 15px; border:1px solid #ddd; border-radius:8px;">
+      
+      <label>মোবাইল নাম্বার *</label>
+      <input type="tel" name="phone" placeholder="01XXXXXXXXX" pattern="01[0-9]{9}" maxlength="11" required style="width:100%; padding:12px; margin:5px 0 15px; border:1px solid #ddd; border-radius:8px;">
+      
+      <label>সম্পূর্ণ ঠিকানা *</label>
+      <textarea name="address" placeholder="গ্রাম, ইউনিয়ন, জেলা" rows="3" required style="width:100%; padding:12px; margin:5px 0 15px; border:1px solid #ddd; border-radius:8px;"></textarea>
+      
+      <label>কত পিস নিবেন *</label>
+      <select name="quantity" required style="width:100%; padding:12px; margin:5px 0 20px; border:1px solid #ddd; border-radius:8px;">
+        <option value="1">1 পিস</option><option value="2">2 পিস</option><option value="3">3 পিস</option>
+        <option value="4">4 পিস</option><option value="5">5 পিস</option>
+      </select>
+      
+      <button type="submit" style="width:100%; padding:15px; background:#25D366; color:white; border:none; border-radius:8px; font-size:17px; font-weight:bold;">📲 WhatsApp এ সাবমিট</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openForm(productName) {
+  document.getElementById("productName").value = productName;
+  document.getElementById("orderPopup").style.display = "block";
+}
+function closeForm() {
+  document.getElementById("orderPopup").style.display = "none";
+}
+function sendToWhatsApp(event) {
+  event.preventDefault();
+  var name = document.querySelector('input[name="name"]').value;
+  var mobile = document.querySelector('input[name="phone"]').value;
+  var address = document.querySelector('textarea[name="address"]').value;
+  var qty = document.querySelector('select[name="quantity"]').value;
+  var product = document.querySelector('input[name="product"]').value;
+  
+  var message = `*নতুন অর্ডার*%0A%0A*প্রোডাক্ট:* ${product}%0A*নাম:* ${name}%0A*মোবাইল:* ${mobile}%0A*ঠিকানা:* ${address}%0A*পরিমান:* ${qty} পিস`;
+  window.open(`https://wa.me/8801328584095?text=${message}`, '_blank');
+  closeForm();
+}
+</script>
+</body>
+</html>    
 </body>
 </html>
   <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="aeab85ef-dfea-4990-ad7d-d68e2106551a";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-</body>
   <p style="margin:5px 0; font-size:14px; color:#ccc;">Glorry Hub © 2026</p>
 </footer>
-<body>
 <div class="header">
   <h1>অনলাইন বিক্রেতা</h1>
 </div>
